@@ -26,7 +26,7 @@ function Social() {
     const token = localStorage.getItem('token');
     if (!token) return;
     try {
-      const response = await fetch("http://localhost:7070/private/news", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/private/news`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${JSON.parse(token)}`,
@@ -52,7 +52,7 @@ function Social() {
     const token = localStorage.getItem('token');
     if (!token) return;
     try {
-      const response = await fetch("http://localhost:7070/private/me", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/private/me`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${JSON.parse(token)}`,
@@ -84,7 +84,7 @@ function Social() {
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:7070/auth", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth`, {
         method: "POST",
         body: JSON.stringify({
           login: formData.username,
